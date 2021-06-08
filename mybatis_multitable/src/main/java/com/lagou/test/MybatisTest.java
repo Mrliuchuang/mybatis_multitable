@@ -1,6 +1,8 @@
 package com.lagou.test;
 
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.lagou.mapper.IOrderMapper;
 import com.lagou.mapper.IUserMapper;
 import com.lagou.mapper.UserMapper;
@@ -10,7 +12,9 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.Before;
 import org.junit.jupiter.api.Test;
+import tk.mybatis.mapper.entity.Example;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -69,11 +73,14 @@ public class MybatisTest {
     }
 
     @Test
-    public void addUser(){
+    public void addUser() throws IOException{
+        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        IUserMapper   userMapper = sqlSession.getMapper(IUserMapper.class);
         User user = new User();
-        user.setId(3);
-        user.setUsername("测试数据");
-
+        user.setId(4);
+        user.setUsername("tom");
         userMapper.addUser(user);
     }
 
@@ -168,7 +175,6 @@ public class MybatisTest {
         }
 
     }
-
 
 
     }

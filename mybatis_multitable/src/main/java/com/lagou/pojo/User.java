@@ -2,9 +2,11 @@ package com.lagou.pojo;
 
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /*@Table(name = "user")*/
-public class User implements Serializable {
+public class User {
 
     /*@Id //对应的是注解id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //设置主键的生成策略*/
@@ -12,43 +14,45 @@ public class User implements Serializable {
 
     private String username;
 
-    @Override
+
+   /* //    //表示用户关联的订单
+    private List<Order> orderList = new ArrayList<>();
+    //
+//    //表示用户关联的角色
+    private List<Role> roleList = new ArrayList<>();
+
+    public List<Role> getRoleList() {
+        return roleList;
+    }
+
+    public void setRoleList(List<Role> roleList) {
+        this.roleList = roleList;
+    }
+
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
+    }*/
+
+        @Override
+        public String toString() {
+            return "User{" +
+                    "id=" + id +
+                    ", username='" + username + '\'' +
+                    '}';
+        }
+//
+    /*@Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
+                ", roleList=" + roleList +
                 '}';
-    }
-    //    //表示用户关联的订单
-//    private List<Order> orderList = new ArrayList<>();
-//
-//    //表示用户关联的角色
-//    private List<Role> roleList = new ArrayList<>();
-//
-//    public List<Order> getOrderList() {
-//        return orderList;
-//    }
-//
-//    public void setOrderList(List<Order> orderList) {
-//        this.orderList = orderList;
-//    }
-//
-//    public List<Role> getRoleList() {
-//        return roleList;
-//    }
-//
-//    public void setRoleList(List<Role> roleList) {
-//        this.roleList = roleList;
-//    }
-//
-//    @Override
-//    public String toString() {
-//        return "User{" +
-//                "id=" + id +
-//                ", username='" + username + '\'' +
-//                ", roleList=" + roleList +
-//                '}';
-//    }
+    }*/
 
     public Integer getId() {
         return id;

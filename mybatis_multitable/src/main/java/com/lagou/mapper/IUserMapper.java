@@ -6,32 +6,32 @@ import org.mybatis.caches.redis.RedisCache;
 
 import java.util.List;
 
-@CacheNamespace(implementation = RedisCache.class)//开启二级缓存
+/*@CacheNamespace(implementation = RedisCache.class)//开启二级缓存*/
 public interface IUserMapper {
 
-    //查询所有用户、同时查询每个用户关联的订单信息
+   /* //查询所有用户、同时查询每个用户关联的订单信息
     @Select("select * from user")
     @Results({
             @Result(property = "id",column = "id"),
             @Result(property = "username",column = "username"),
             @Result(property = "orderList",column = "id",javaType = List.class,
                 many=@Many(select = "com.lagou.mapper.IOrderMapper.findOrderByUid"))
-    })
+    })*/
     public List<User> findAll();
 
     //查询所有用户、同时查询每个用户关联的角色信息
-    @Select("select * from user")
+   /* @Select("select * from user")
     @Results({
             @Result(property = "id",column = "id"),
             @Result(property = "username",column = "username"),
             @Result(property = "roleList",column = "id",javaType = List.class,
              many = @Many(select = "com.lagou.mapper.IRoleMapper.findRoleByUid"))
-    })
+    })*/
     public List<User> findAllUserAndRole();
 
 
     //添加用户
-    @Insert("insert into user values(#{id},#{username})")
+    @Insert("insert into user (id,username) values(#{id},#{username})")
     public void addUser(User user);
 
     //更新用户
