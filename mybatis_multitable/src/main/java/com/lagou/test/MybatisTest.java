@@ -110,7 +110,11 @@ public class MybatisTest {
 
 
     @Test
-    public void oneToOne(){
+    public void oneToOne() throws  IOException{
+        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        orderMapper = sqlSession.getMapper(IOrderMapper.class);
         List<Order> orderAndUser = orderMapper.findOrderAndUser();
         for (Order order : orderAndUser) {
             System.out.println(order);
@@ -119,7 +123,11 @@ public class MybatisTest {
     }
 
     @Test
-    public void oneToMany(){
+    public void oneToMany() throws IOException{
+        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        userMapper = sqlSession.getMapper(IUserMapper.class);
         List<User> all = userMapper.findAll();
         for (User user : all) {
             System.out.println(user);
@@ -133,7 +141,6 @@ public class MybatisTest {
         for (User user : all) {
             System.out.println(user);
         }
-
     }
 
     @Test

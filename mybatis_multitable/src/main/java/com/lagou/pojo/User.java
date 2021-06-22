@@ -15,7 +15,7 @@ public class User {
     private String username;
 
 
-   /* //    //表示用户关联的订单
+    //    //表示用户关联的订单
     private List<Order> orderList = new ArrayList<>();
     //
 //    //表示用户关联的角色
@@ -35,22 +35,31 @@ public class User {
 
     public void setOrderList(List<Order> orderList) {
         this.orderList = orderList;
-    }*/
+    }
 
-        @Override
-        public String toString() {
-            return "User{" +
-                    "id=" + id +
-                    ", username='" + username + '\'' +
-                    '}';
-        }
+      /*  @Override
+            public String toString() {
+                return "User{" +
+                        "id=" + id +
+                        ", username='" + username + '\'' +
+                        '}';
+        }*/
 //
-    /*@Override
+    @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", roleList=" + roleList +
+                '}';
+    }
+
+   /* @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", orderList=" + orderList +
                 '}';
     }*/
 
