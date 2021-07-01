@@ -49,7 +49,7 @@ public interface IUserMapper {
 
 
     //根据id查询用户
-    @Options(useCache = true)
+    /*@Options(useCache = true)*/
     @Select({"select * from user where id = #{id}"})
     public User findUserById(Integer id);
 
