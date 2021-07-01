@@ -22,7 +22,7 @@ public class CacheTest {
     @Before
     public void before() throws IOException {
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
-         sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         sqlSession = sqlSessionFactory.openSession();
         userMapper = sqlSession.getMapper(IUserMapper.class);
 

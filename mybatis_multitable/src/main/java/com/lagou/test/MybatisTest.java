@@ -85,10 +85,14 @@ public class MybatisTest {
     }
 
     @Test
-    public void updateUser(){
+    public void updateUser() throws IOException {
+        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        IUserMapper   userMapper = sqlSession.getMapper(IUserMapper.class);
         User user = new User();
         user.setId(3);
-        user.setUsername("修改了测试数据");
+        user.setUsername("jjjjjj");
 
         userMapper.updateUser(user);
 
@@ -110,7 +114,11 @@ public class MybatisTest {
 
 
     @Test
-    public void oneToOne(){
+    public void oneToOne() throws  Exception{
+        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        orderMapper = sqlSession.getMapper(IOrderMapper.class);
         List<Order> orderAndUser = orderMapper.findOrderAndUser();
         for (Order order : orderAndUser) {
             System.out.println(order);
@@ -128,7 +136,11 @@ public class MybatisTest {
     }
 
     @Test
-    public void ManyToMany(){
+    public void ManyToMany() throws  Exception{
+        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        IUserMapper   userMapper = sqlSession.getMapper(IUserMapper.class);
         List<User> all = userMapper.findAllUserAndRole();
         for (User user : all) {
             System.out.println(user);
@@ -137,7 +149,11 @@ public class MybatisTest {
     }
 
     @Test
-    public void pageHelperTest(){
+    public void pageHelperTest() throws  IOException{
+        InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
+        SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
+        SqlSession sqlSession = sqlSessionFactory.openSession(true);
+        userMapper = sqlSession.getMapper(IUserMapper.class);
 
         PageHelper.startPage(1,1);
         List<User> users = userMapper.selectUser();
@@ -150,7 +166,6 @@ public class MybatisTest {
         System.out.println("总页数："+pageInfo.getPages());
         System.out.println("当前页："+pageInfo.getPageNum());
         System.out.println("每页显示的条数："+pageInfo.getPageSize());
-
 
     }
 

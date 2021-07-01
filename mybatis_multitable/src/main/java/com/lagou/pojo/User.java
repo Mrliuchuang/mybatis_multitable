@@ -1,21 +1,25 @@
 package com.lagou.pojo;
 
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-/*@Table(name = "user")*/
-public class User {
+@Table(name = "user")
+public class User implements Serializable {
 
-    /*@Id //对应的是注解id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //设置主键的生成策略*/
+    @Id //对应的是注解id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //设置主键的生成策略
     private Integer id;
 
     private String username;
 
 
-   /* //    //表示用户关联的订单
+  /*  //    //表示用户关联的订单
     private List<Order> orderList = new ArrayList<>();
     //
 //    //表示用户关联的角色
@@ -35,25 +39,25 @@ public class User {
 
     public void setOrderList(List<Order> orderList) {
         this.orderList = orderList;
-    }*/
+    }
 
-        @Override
+       *//* @Override
         public String toString() {
             return "User{" +
                     "id=" + id +
                     ", username='" + username + '\'' +
                     '}';
-        }
+        }*//*
 //
-    /*@Override
+    @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
                 ", username='" + username + '\'' +
                 ", roleList=" + roleList +
                 '}';
-    }*/
-
+    }
+*/
     public Integer getId() {
         return id;
     }
